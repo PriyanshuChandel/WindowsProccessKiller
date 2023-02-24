@@ -1,0 +1,12 @@
+2023-02-24 12:10:09 Selected host to proceed  >>> ['x.x.x.x']
+2023-02-24 12:10:10 Selected processes to proceed  >>> ['notepad.exe', 'vlc.exe', 'application.exe', 'secondapplication.exe', 'nNumberOfApplication.exe']
+2023-02-24 12:10:14 Server [EQPT10][x.x.x.x] process [notepad.exe] output >>> 
+2023-02-24 12:10:14 Server [EQPT10][x.x.x.x] process [notepad.exe] error >>> ERROR: The RPC server is unavailable.
+2023-02-24 12:10:14 Server [EQPT10][x.x.x.x] process [vlc.exe] output >>> 
+2023-02-24 12:10:14 Server [EQPT10][x.x.x.x] process [vlc.exe] error >>> ERROR: The RPC server is unavailable.
+2023-02-24 12:10:15 Server [EQPT10][x.x.x.x] process [application.exe] output >>> 
+2023-02-24 12:10:15 Server [EQPT10][x.x.x.x] process [application.exe] error >>> ERROR: The RPC server is unavailable.
+2023-02-24 12:10:15 Server [EQPT10][x.x.x.x] process [secondapplication.exe] output >>> 
+2023-02-24 12:10:15 Server [EQPT10][x.x.x.x] process [secondapplication.exe] error >>> ERROR: The RPC server is unavailable.
+2023-02-24 12:10:15 Server [EQPT10][x.x.x.x] process [nNumberOfApplication.exe] output >>> 
+2023-02-24 12:10:15 Server [EQPT10][x.x.x.x] process [nNumberOfApplication.exe] error >>> ERROR: The RPC server is unavailable.
