@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <owner>
+         <name> "Owner"</name>
+         <organization> "OpenSOurce"</organization>
+    </owner>
+    <equipments>
+		<equipment ID="1" Name="EQPT1">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="2" Name="EQPT2">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="3" Name="EQPT3">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="4" Name="EQPT4">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>	
+		<equipment ID="5" Name="EQPT5">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="6" Name="EQPT6">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="7" Name="EQPT7">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="8" Name="EQPT8">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>	
+		<equipment ID="9" Name="EQPT9">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+		<equipment ID="10" Name="EQPT10">
+			<equipment_Type>Windows</equipment_Type>
+			<ip>x.x.x.x</ip>
+		</equipment>
+    </equipments>
+ </root>
