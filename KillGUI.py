@@ -308,10 +308,8 @@ class processApp:
                                                     text=f'0/{len(self.ipList)}')
             for ip in self.ipList:
                 hostName = {v: k for k, v in self.equipDict.items()}.get(ip)
-                print('1')
                 hostReachability = self.isHostReachable(ip, hostName)
                 self.fileHandler.flush()
-                print('2')
                 if hostReachability:
                     self.processKill(ip, hostName)
                 self.updateProgress(self.progressOverall, self.progressStyleOverall,
@@ -350,7 +348,6 @@ class processApp:
             output = commandExecution.stdout.read().decode().strip()
             error = commandExecution.stderr.read().decode().strip()
             returnCode = commandExecution.wait()
-            print(output)
             if returnCode == 0:
                 self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] Server [{hostName}_{ip}] is '
                                        f'CONNECTED\n')
