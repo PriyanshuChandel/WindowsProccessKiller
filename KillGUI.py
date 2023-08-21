@@ -1,4 +1,4 @@
-from subprocess import Popen, PIPE 
+from subprocess import Popen, PIPE
 from tkinter import Tk, Label, Button, Checkbutton, IntVar, LabelFrame, Toplevel
 from tkinter.ttk import Progressbar, Style
 from tkinter.scrolledtext import ScrolledText
@@ -10,17 +10,19 @@ from bs4 import BeautifulSoup
 from xml.etree.ElementTree import ParseError
 from time import time
 
+
 def disableCheckboxes(checkBoxes):
     for checkbox in checkBoxes.keys():
         checkbox.config(state='disabled', cursor="arrow")
+
 
 def enableCheckboxes(checkBoxesDict):
     for checkbox in checkBoxesDict.keys():
         checkbox.config(state='normal', cursor="hand2", bg='white')
         checkbox.deselect()
 
+
 class processApp:
-    # 2. File and directory management
     if not exists('log'):
         makedirs('log')
     fileHandler = open(f"log/logs_{datetime.now().strftime('%Y%m%d%H%M%S')}.txt", 'a')
@@ -53,7 +55,7 @@ class processApp:
                                    f' [{self.credential}][{e}]\n')
         self.window = Tk()
         self.window.config(bg='#F0F0F0')
-        self.window.title('Kill - v1.0')
+        self.window.title('Kill - v1.1')
         self.window.geometry('300x455')
         self.window.iconbitmap(self.iconFile)
         self.window.resizable(False, False)
@@ -287,7 +289,8 @@ class processApp:
             for checkbox in self.checkBoxesProcess.keys():
                 checkbox.deselect()
             self.checkboxCommandProcess()
-            self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] All Host deselected by [ALL]\n')
+            self.fileHandler.write(
+                f'{datetime.now().replace(microsecond=0)} [Info] All Processes deselected by [ALL]\n')
         self.fileHandler.flush()
 
     def killingProcess(self):
@@ -334,8 +337,13 @@ class processApp:
                                    f'Host - {len(self.atLeastOneProcessKilledHostDict)}\n')
             self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] All processes FAILED to kill for '
                                    f'Total UnReachableHost - {len(self.unReachableHostDict)}\n')
-            self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] ELAPSED TIME TO COMPLETE'
-                                   f' {round(endTime - startTime, 2) / 60} Minutes\n')
+            elapsedTime = endTime - startTime
+            hours, remainder = divmod(elapsedTime, 3600)
+            minutes, remainder = divmod(remainder, 60)
+            seconds, milliseconds = divmod(remainder, 1)
+            self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} ELAPSED TIME TO COMPLETE WHOLE PROCESS IS '
+                                   f'{int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds '
+                                   f'{int(milliseconds * 1000)} milliseconds')
             self.fileHandler.flush()
 
         threadKillProcess = Thread(target=inner)
@@ -384,7 +392,7 @@ class processApp:
             try:
                 commandConstruct = f'Taskkill /S {ip} /U {self.userName} /P {self.password} /F /T /IM ' \
                                    f'{eachSelectedProcess}'
-                # commandConstruct = f'taskkill  /IM {eachSelectedProcess}'
+
                 commandExecution = Popen(commandConstruct, stdout=PIPE, stderr=PIPE, shell=True)
                 output = commandExecution.stdout.read().decode().strip()
                 error = commandExecution.stderr.read().decode().strip()
@@ -458,7 +466,8 @@ class processApp:
                 hostCheckButtons.pack()
                 self.checkBoxesScrolledTextHost.window_create('end', window=hostCheckButtons)
                 hostVar.trace_add('write', self.enableProcessCheckBtnSubmitBtn)
-            self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] Host Checkboxes created.. \n')
+            if len(self.checkBoxesHost) > 0:
+                self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] Host Checkboxes created.. \n')
         except Exception as e:
             self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [ERROR] Host Checkboxes failed to create. '
                                    f'{e}\n')
@@ -474,7 +483,9 @@ class processApp:
                 processCheckButtons.pack()
                 self.checkBoxesScrolledTextProcess.window_create('end', window=processCheckButtons)
                 processVar.trace_add('write', self.enableProcessCheckBtnSubmitBtn)
-            self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [Info] Process Checkboxes created.. \n')
+            if len(self.checkBoxesProcess) > 0:
+                self.fileHandler.write(
+                    f'{datetime.now().replace(microsecond=0)} [Info] Process Checkboxes created.. \n')
             disableCheckboxes(self.checkBoxesProcess)
         except Exception as e:
             self.fileHandler.write(f'{datetime.now().replace(microsecond=0)} [ERROR] Process Checkboxes failed to '
